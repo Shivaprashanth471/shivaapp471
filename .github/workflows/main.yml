@@ -1,23 +1,26 @@
 name: cicd setup
+name: LTM1 CI&CD setup
 on:
-  push:
-    branches: [ main ]
-  steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14.x'
+  push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
     # - run: npm install
     # - run: npm test
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run test
-      run: npm test
-   build:
-    runs-on: ubuntu-latest
-    steps:
+      - name: Install dependencies
+        run: npm install
+ 
+      - name: Run test
+        run: npm test
+      - name: deploy to server
+        runs-on: ubuntu-latest
+        steps:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
