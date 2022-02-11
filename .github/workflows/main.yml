@@ -1,6 +1,5 @@
-on
+on:
   push:
-    branches: [ main ]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js
