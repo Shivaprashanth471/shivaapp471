@@ -1,5 +1,4 @@
 name: cicd setup
-name: LTM1 CI&CD setup
 on:
   push
 jobs:
